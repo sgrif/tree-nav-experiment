@@ -4,7 +4,7 @@
   .form-inputs
     = f.input :name
     = f.input :content
-    = f.input :parent_id, collection: Page.order(:name), include_blank: true
+    = f.input :parent_id, collection: Page.order(:ancestry).map { |page| "- " * page.depth + page.name }, include_blank: true
 
   .form-actions
     = f.submit class: ["btn btn-primary"]
