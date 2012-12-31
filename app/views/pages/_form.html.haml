@@ -1,0 +1,10 @@
+= simple_form_for(@page) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name
+    = f.input :content
+    = f.input :parent_id, collection: Page.order(:name), include_blank: true
+
+  .form-actions
+    = f.submit class: ["btn btn-primary"]

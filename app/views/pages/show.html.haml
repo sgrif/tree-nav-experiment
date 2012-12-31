@@ -1,0 +1,19 @@
+- content_for :title, @page.name
+
+.row
+  .span4
+    = render "submenu_pages", pages: @page.root.descendants.arrange if @page
+  .span8
+    - if @page.ancestors.any?
+      %ul.breadcrumb
+        - @page.ancestors.each do |page|
+          %li
+            = link_to page.name, page
+            %span.divider /
+        %li.active= @page.name
+    %p#notice= notice
+
+    %h1= @page.name
+    = simple_format @page.content
+
+    = link_to 'Edit', edit_page_path(@page)

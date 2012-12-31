@@ -1,0 +1,5 @@
+%ul.nav.nav-list
+  - pages.each do |page, children|
+    %li{ class: (:active if current_page?(page)) }
+      = link_to page.name, page
+      = render "submenu_pages", pages: children if children.present?

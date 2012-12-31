@@ -1,0 +1,8 @@
+%ul
+  - pages.each do |page, children|
+    %li
+      = page.name
+      = link_to "Show", page
+      = link_to "Edit", edit_page_path(page)
+      = link_to "Destroy", page, method: :delete unless children.present?
+      = render "index_pages", pages: children if children.present?
